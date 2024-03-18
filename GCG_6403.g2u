@@ -1,0 +1,561 @@
+Program.Sub.ScreenSU.Start
+Gui.Form..create(BaseForm)
+Gui.Form..caption("Positive Pay Export")
+Gui.Form..size(9060,10950)
+Gui.Form..position(0,0)
+Gui.Form..event(UnLoad,Form_UnLoad)
+Gui.Form..forecolor(0)
+Gui.Form..BackColor(-2147483633)
+Gui.Form..mousepointer(0)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..AlwaysOnTop(False)
+Gui.Form..FontName("Tahoma")
+Gui.Form..FontSize(8.25)
+Gui.Form..ControlBox(True)
+Gui.Form..MaxButton(True)
+Gui.Form..MinButton(True)
+Gui.Form..Moveable(True)
+Gui.Form..Sizeable(True)
+Gui.Form..ShowInTaskBar(True)
+Gui.Form..TitleBar(True)
+Gui.Form.dpStart.create(datepicker)
+Gui.Form.dpStart.size(1935,285)
+Gui.Form.dpStart.position(540,420)
+Gui.Form.dpStart.Enabled(True)
+Gui.Form.dpStart.Visible(True)
+Gui.Form.dpStart.Zorder(0)
+Gui.Form.dpStart.CheckBox(False)
+Gui.Form.dpStart.FontName("Tahoma")
+Gui.Form.dpStart.FontSize(8.25)
+Gui.Form.cmdOK.create(button)
+Gui.Form.cmdOK.caption("OK")
+Gui.Form.cmdOK.size(855,375)
+Gui.Form.cmdOK.position(525,840)
+Gui.Form.cmdOK.event(Click,cmdOK_Click)
+Gui.Form.cmdOK.defaultvalue("")
+Gui.Form.cmdOK.Enabled(True)
+Gui.Form.cmdOK.Visible(True)
+Gui.Form.cmdOK.Zorder(0)
+Gui.Form.cmdOK.FontName("Tahoma")
+Gui.Form.cmdOK.FontSize(8.25)
+Gui.Form.lbl1.Create(Label,"Date",True,330,210,0,570,210,True,0,"Arial",8,-2147483633,0,0)
+Gui.Form.lbl1.BorderStyle(0)
+Gui.Form.txtExportFolder.Create(TextBox,"",True,5580,300,0,90,10035,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtExportFolder.Anchor(6)
+Gui.Form.lbl2.Create(Label,"Export Folder",True,1215,255,0,75,9825,True,0,"Arial",8,-2147483633,0,0)
+Gui.Form.lbl2.Anchor(6)
+Gui.Form.lbl2.BorderStyle(0)
+Gui.Form.cmdBrowseExportFolder.Create(Button)
+Gui.Form.cmdBrowseExportFolder.Size(570,345)
+Gui.Form.cmdBrowseExportFolder.Position(5745,10005)
+Gui.Form.cmdBrowseExportFolder.Caption("^")
+Gui.Form.cmdBrowseExportFolder.Event(Click,cmdBrowseExportFolder_Click)
+Gui.Form.cmdBrowseExportFolder.Anchor(6)
+Gui.Form.cmdBrowseExportFolder.Enabled(True)
+Gui.Form.cmdBrowseExportFolder.Visible(True)
+Gui.Form.cmdBrowseExportFolder.Zorder(0)
+Gui.Form.cmdBrowseExportFolder.FontName("Tahoma")
+Gui.Form.cmdBrowseExportFolder.FontSize(8.25)
+Gui.Form.lbl4.Create(Label,"Bank Account",True,1020,210,0,3735,240,True,0,"Arial",8,-2147483633,0,0)
+Gui.Form.lbl4.BorderStyle(0)
+Gui.Form.gsCustom.Create(GsGridControl)
+Gui.Form.gsCustom.Size(8820,8445)
+Gui.Form.gsCustom.Position(75,1275)
+Gui.Form.gsCustom.Enabled(True)
+Gui.Form.gsCustom.Visible(True)
+Gui.Form.gsCustom.Zorder(0)
+Gui.Form.cmdExport.Create(Button)
+Gui.Form.cmdExport.Enabled(False)
+Gui.Form.cmdExport.Size(855,375)
+Gui.Form.cmdExport.Position(6390,9990)
+Gui.Form.cmdExport.Caption("Export")
+Gui.Form.cmdExport.DefaultValue("")
+Gui.Form.cmdExport.Event(Click,cmdExport_Click)
+Gui.Form.cmdExport.Visible(True)
+Gui.Form.cmdExport.Zorder(0)
+Gui.Form.cmdExport.FontName("Tahoma")
+Gui.Form.cmdExport.FontSize(8.25)
+Gui.Form.ddlBankAcct.Create(DropDownList)
+Gui.Form.ddlBankAcct.Size(2130,300)
+Gui.Form.ddlBankAcct.Position(3795,450)
+Gui.Form.ddlBankAcct.Enabled(True)
+Gui.Form.ddlBankAcct.Visible(True)
+Gui.Form.ddlBankAcct.Zorder(0)
+Gui.Form.ddlBankAcct.FontName("Tahoma")
+Gui.Form.ddlBankAcct.FontSize(8.25)
+Gui.Form.optAP.Create(Option)
+Gui.Form.optAP.Size(630,255)
+Gui.Form.optAP.Position(7275,435)
+Gui.Form.optAP.Caption("AP")
+Gui.Form.optAP.Visible(False)
+Gui.Form.optAP.Enabled(True)
+Gui.Form.optAP.Zorder(0)
+Gui.Form.optAP.FontName("Tahoma")
+Gui.Form.optAP.FontSize(8.25)
+Gui.Form.optPayroll.Create(Option)
+Gui.Form.optPayroll.Size(960,255)
+Gui.Form.optPayroll.Position(7935,435)
+Gui.Form.optPayroll.Caption("Payroll")
+Gui.Form.optPayroll.Visible(False)
+Gui.Form.optPayroll.Enabled(True)
+Gui.Form.optPayroll.Zorder(0)
+Gui.Form.optPayroll.FontName("Tahoma")
+Gui.Form.optPayroll.FontSize(8.25)
+Gui.Form.cmdAddAccount.Create(Button)
+Gui.Form.cmdAddAccount.Size(315,345)
+Gui.Form.cmdAddAccount.Position(6000,435)
+Gui.Form.cmdAddAccount.Caption("+")
+Gui.Form.cmdAddAccount.Event(Click,cmdAddAccount_Click)
+Gui.Form.cmdAddAccount.Enabled(True)
+Gui.Form.cmdAddAccount.Visible(True)
+Gui.Form.cmdAddAccount.Zorder(0)
+Gui.Form.cmdAddAccount.FontName("Tahoma")
+Gui.Form.cmdAddAccount.FontSize(8.25)
+Gui.Form.cmdRemoveBankAcct.Create(Button)
+Gui.Form.cmdRemoveBankAcct.Size(315,345)
+Gui.Form.cmdRemoveBankAcct.Position(6360,435)
+Gui.Form.cmdRemoveBankAcct.Caption("-")
+Gui.Form.cmdRemoveBankAcct.Event(Click,cmdRemoveBankAcct_Click)
+Gui.Form.cmdRemoveBankAcct.Enabled(True)
+Gui.Form.cmdRemoveBankAcct.Visible(True)
+Gui.Form.cmdRemoveBankAcct.Zorder(0)
+Gui.Form.cmdRemoveBankAcct.FontName("Tahoma")
+Gui.Form.cmdRemoveBankAcct.FontSize(8.25)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+Program.Sub.Main.Start
+'Author: Arturo Almaguer
+'Date: 23rd June 2021
+'Customer: Custom Power Enclosures, quote number 12813
+'This project generataes a Positive Pay csv file for Plains State Bank
+'File Layout: Account Number, Account Type, Check Number, Amount, Payee, Issue Date
+'Edited Issue date to be formatted as MM/DD/yyyy instead of MM/DD/yy -SS 1/28/2022
+
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sDefaultfolder.Declare
+	v.Local.bExist.Declare
+	v.Local.sRet.Declare
+	v.Local.iCnt.Declare
+	
+	'Security
+	'f.Global.Security.IsInGroup(v.Caller.User,"POSP6085",V.Caller.CompanyCode,V.Local.bExist)
+'	F.Intrinsic.Control.If(V.Local.bExist.Not)
+'		F.Intrinsic.UI.Msgbox("User is not in security group POSP6085.","Attention")
+'		f.Intrinsic.Control.CallSub("Unload")
+'	F.Intrinsic.Control.EndIf
+
+	F.Odbc.Connection!Conx.OpenCompanyConnection
+	
+	'Check default folder
+	f.Intrinsic.String.Build("{0}\Custom",v.Caller.GlobalDir,v.Local.sDefaultfolder)
+	f.Intrinsic.File.DirExists(v.Local.sDefaultfolder,v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDefaultfolder)
+	f.Intrinsic.Control.EndIf	
+	
+	f.Intrinsic.String.Build("{0}\Custom\6403",v.Caller.GlobalDir,v.Local.sDefaultfolder)
+	f.Intrinsic.File.DirExists(v.Local.sDefaultfolder,v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDefaultfolder)
+	f.Intrinsic.Control.EndIf	
+	
+	'Default Positive Pay folder that store the csv output file.
+	f.Intrinsic.String.Build("{0}\Custom\6403\{1}",v.Caller.GlobalDir,v.Caller.CompanyCode,v.Local.sDefaultfolder)
+	f.Intrinsic.File.DirExists(v.Local.sDefaultfolder,v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDefaultfolder)
+	f.Intrinsic.Control.EndIf	
+	
+	'Set Default folder
+	gui.Form.txtExportFolder.Text(v.Local.sDefaultfolder)
+	
+	'Set Bank Account
+	F.Global.Registry.ReadValue("SUPERVSR",V.Caller.CompanyCode,"ACT",6403,1001,5,"",v.Local.sRet)	
+	gui.Form.ddlBankAcct.ClearItems
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.Local.sRet.UBound,1)
+		f.Intrinsic.Control.If(v.Local.sRet(v.Local.iCnt).Trim,<>,"")
+			gui.Form.ddlBankAcct.AddItem(v.Local.sRet(v.Local.iCnt))
+		f.Intrinsic.Control.EndIf		
+	f.Intrinsic.Control.Next(v.Local.iCnt)	
+	
+	'ContextMenu
+	f.Intrinsic.Control.CallSub("ContextMenu")
+	
+	'Set default form
+	gui.Form.optAP.Value(1)
+	gui.Form.gsCustom.Anchor(15)
+	gui.Form.cmdExport.Anchor(6)
+	gui.Form..Visible(True)
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6403_PosPay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+Program.Sub.UnLoad.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+
+	F.Intrinsic.Control.If(V.ODBC.conx.Exists,=,1)
+		F.ODBC.Connection!conx.close
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	f.Intrinsic.String.Build("Subroutine Error {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.EndTry
+Program.Sub.UnLoad.End
+Program.Sub.cmdAddAccount_Click.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sRet.Declare
+	v.Local.sBankAccount.Declare
+	v.Local.bEx.Declare
+	v.Local.iCnt.Declare
+	v.Local.sCurrentBankAcctSet.Declare
+	v.Local.sFilter.Declare
+
+	'Validate blank or cancel
+	f.Intrinsic.UI.Inputbox("Add Bank Account","Enter new Bank Account:","",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim,=,"",OR,V.Local.sRet.IsCancel,=,True)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	v.Local.sBankAccount.Set(v.Local.sRet.Trim)
+	
+	'Lookup registry
+	F.Global.Registry.ReadValue("SUPERVSR",V.Caller.CompanyCode,"ACT",6403,1001,5,"",v.Local.sCurrentBankAcctSet)
+	f.Intrinsic.Control.If(v.DataTable.FindAct.Exists)
+		f.Data.DataTable.Close("FindAct")
+	f.Intrinsic.Control.EndIf
+	f.Data.DataTable.CreateFromString("FindAct",v.Local.sCurrentBankAcctSet,"Act","String","","*!*",True)
+	
+	f.Intrinsic.String.Build("Act = '{0}'",v.Local.sBankAccount.UCase,v.Local.sFilter)
+	f.Data.DataTable.Select("FindAct",v.Local.sFilter,v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,<>,"***NORETURN***")
+		f.Intrinsic.UI.Msgbox("Bank Account already exists.","Attention")
+		f.Intrinsic.Control.ExitSub	
+	f.Intrinsic.Control.EndIf	
+	
+	'Rebuild
+	f.Intrinsic.String.Build("{0}*!*{1}",v.Local.sCurrentBankAcctSet.Trim,v.Local.sBankAccount.UCase,v.Local.sRet)
+	F.Global.Registry.AddValue("SUPERVSR",V.Caller.CompanyCode,"ACT",6403,1001,False,V.Local.sRet,False,0,-1,v.Ambient.Date,12:00:00 AM)
+	
+	gui.Form.ddlBankAcct.ClearItems
+	f.Intrinsic.String.Split(v.Local.sRet,"*!*",v.Local.sRet)
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.Local.sRet.UBound,1)
+		f.Intrinsic.Control.If(v.Local.sRet(v.Local.iCnt).Trim,<>,"")
+			gui.Form.ddlBankAcct.AddItem(v.Local.sRet(v.Local.iCnt))
+		f.Intrinsic.Control.EndIf
+		
+	f.Intrinsic.Control.Next(v.Local.iCnt)	
+
+F.Intrinsic.Control.Catch
+	f.Intrinsic.String.Build("Subroutine Error {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdAddAccount_Click.End
+Program.Sub.cmdRemoveBankAcct_Click.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sRet.Declare
+	v.Local.sBankAccount.Declare
+	v.Local.shold.Declare
+	v.Local.bEx.Declare
+	v.Local.iCnt.Declare
+	v.Local.sNewBankAccountSet.Declare
+	V.Local.sCurrentBankAcctSet.Declare
+	V.Local.sFilter.Declare
+
+	'Validate blank or Cancel
+	f.Intrinsic.UI.Inputbox("Remove Bank Account","Enter the Bank Account to be removed:","",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim,=,"",OR,V.Local.sRet.IsCancel,=,True)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	v.Local.sBankAccount.Set(v.Local.sRet.Trim)
+
+	'Lookup registry
+	F.Global.Registry.ReadValue("SUPERVSR",V.Caller.CompanyCode,"ACT",6403,1001,5,"",v.Local.sCurrentBankAcctSet)
+	f.Intrinsic.Control.If(v.DataTable.FindAct.Exists)
+		f.Data.DataTable.Close("FindAct")
+	f.Intrinsic.Control.EndIf
+	f.Data.DataTable.CreateFromString("FindAct",v.Local.sCurrentBankAcctSet,"Act","String","","*!*",True)
+	
+	f.Intrinsic.String.Build("Act = '{0}'",v.Local.sBankAccount.UCase,v.Local.sFilter)
+	f.Data.DataTable.Select("FindAct",v.Local.sFilter,v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,=,"***NORETURN***")
+		f.Intrinsic.UI.Msgbox("Bank Account does not exist.","Attention")
+		f.Intrinsic.Control.ExitSub	
+	f.Intrinsic.Control.EndIf	
+	
+	'Rebuild
+	gui.Form.ddlBankAcct.ClearItems	
+	f.Intrinsic.String.Split(v.Local.sCurrentBankAcctSet,"*!*",v.Local.sRet)
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.Local.sRet.UBound,1)
+		v.Local.shold.Set(v.Local.sRet(v.Local.iCnt).Trim)
+		f.Intrinsic.Control.If(v.Local.shold.Ucase,<>,v.Local.sBankAccount.UCase,and,v.Local.shold.Trim,<>,"")
+			gui.Form.ddlBankAcct.AddItem(v.Local.shold.UCase)
+			f.Intrinsic.String.Build("{0}*!*{1}",v.Local.sNewBankAccountSet,v.Local.shold.UCase,v.Local.sNewBankAccountSet)
+		f.Intrinsic.Control.EndIf		
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	F.Global.Registry.AddValue("SUPERVSR",V.Caller.CompanyCode,"ACT",6403,1001,False,V.Local.sNewBankAccountSet,False,0,-1,v.Ambient.Date,12:00:00 AM)
+
+F.Intrinsic.Control.Catch
+	f.Intrinsic.String.Build("Subroutine Error {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdRemoveBankAcct_Click.End
+Program.Sub.cmdOK_Click.Start
+'Verify if there are checks for the selected date. If yes, show the grid for the user 
+f.Intrinsic.Control.Try	
+	V.Local.sError.Declare
+	v.Local.sSQL.Declare
+	v.Local.bExist.Declare
+	v.Local.dStart.Declare
+	v.Local.iCnt.Declare
+	v.Local.bNum.Declare
+	
+	v.Local.dStart.Set(v.Screen.Form!dpStart.Value)
+	
+	'Check Export Folder
+	f.Intrinsic.File.DirExists(v.Screen.Form!txtExportFolder.Text.Trim,v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.Intrinsic.UI.Msgbox("Export Folder does not exist")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf	
+	
+	f.Intrinsic.UI.InvokeWaitDialog("Processing...")
+	gui.Form..Visible(false)
+		
+	'select data for correct date and account number
+	F.intrinsic.string.Build("select Ck_Date as CheckDate,ltrim(rtrim(Ck_no)) as CheckNumber, Amount, rtrim(Payee) as Payee from V_CHECKS_LOG where CK_DATE = '{0}' and Isnull(Ck_Or_Void,'') = 'C' order by CK_NO",v.Local.dStart.PervasiveDate, V.Local.sSQL)
+	f.Intrinsic.Control.If(v.DataTable.PreT.Exists)
+		f.Data.DataTable.Close("PreT")
+	f.Intrinsic.Control.EndIf
+	f.Data.DataTable.CreateFromSQL("PreT","conx",v.Local.sSQL,True)	
+	f.Intrinsic.Control.If(v.DataTable.PreT.RowCount,=,0)
+		f.Intrinsic.UI.Msgbox("No checks to export")	
+		f.Intrinsic.UI.CloseWaitDialog
+		gui.Form..Visible(True)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf	
+	
+	f.Intrinsic.Control.For(v.Local.iCnt,v.DataTable.PreT.RowCount--,0,-1)
+		f.Intrinsic.Math.IsNumeric(v.DataTable.PreT(v.Local.iCnt).CheckNumber!FieldValTrim,v.Local.bNum)
+		f.Intrinsic.Control.If(v.Local.bNum.Not)
+			f.Data.DataTable.DeleteRow("PreT",v.Local.iCnt)
+		f.Intrinsic.Control.EndIf		
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	f.Data.DataTable.AcceptChanges("PreT")
+
+	f.Data.DataTable.AddColumn("PreT","SelectItem","Boolean",True)
+	
+	f.Intrinsic.UI.CloseWaitDialog
+	
+	Gui.Form.gsCustom.AddGridviewFromDataTable("GVMain","PreT")
+
+	'General format
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","AllowSort",True)
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","AllowFilter",True)
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","OptionsFindAlwaysVisible",True)
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","OptionsViewShowAutoFilterRow",True)
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","OptionsDetailShowDetailTabs",True)
+	Gui.Form.gsCustom.SetGridViewProperty("GVMain","OptionsViewShowGroupPanel",True)
+	
+	'Column format	
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectItem","AllowEdit",True)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectItem","ReadOnly",False)
+	'Width
+	gui.Form.gsCustom.SetColumnProperty("GVMain", "CheckDate", V.Enum.ColumnPropertyNames!MinWidth, 80)
+	gui.Form.gsCustom.SetColumnProperty("GVMain", "CheckNumber", V.Enum.ColumnPropertyNames!MinWidth, 100)
+	gui.Form.gsCustom.SetColumnProperty("GVMain", "Amount", V.Enum.ColumnPropertyNames!MinWidth, 80)
+	gui.Form.gsCustom.SetColumnProperty("GVMain", "Payee", V.Enum.ColumnPropertyNames!MinWidth, 150)
+	gui.Form.gsCustom.SetColumnProperty("GVMain", "SelectItem", V.Enum.ColumnPropertyNames!MinWidth, 50)
+	
+	'Header
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectItem","HeaderHAlignment","Center")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Amount","HeaderHAlignment","far")
+	'Header Font Bold
+	gui.Form.gsCustom.SetColumnProperty("GVMain","CheckDate","HeaderFontBold",True)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","CheckNumber","HeaderFontBold",True)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Amount","HeaderFontBold",True)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectItem","HeaderFontBold",True)
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Payee","HeaderFontBold",True)
+	'Caption
+	gui.Form.gsCustom.SetColumnProperty("GVMain","CheckDate","Caption","Check Date")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","CheckNumber","Caption","Check Number")
+	gui.Form.gsCustom.SetColumnProperty("GVMain","SelectItem","Caption","Select")
+	'Numeric
+	gui.Form.gsCustom.SetColumnProperty("GVMain","Amount","DisplayCustomNumeric","###,###,###,##0.00")	
+	'Custom date
+	Gui.Form.gsCustom.SetColumnProperty("GVMain","CheckDate","DisplayCustomDatetime","d")		
+	
+	gui.Form.gsCustom.MainView("GVMain")
+	gui.Form..Visible(True)
+
+	'Activate run button
+	gui.Form.cmdExport.Enabled(True)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6403_PosPay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdOK_Click.End
+Program.Sub.Form_UnLoad.Start
+f.Intrinsic.Control.CallSub("Unload")
+Program.Sub.Form_UnLoad.End
+Program.Sub.cmdBrowseExportFolder_Click.Start
+'Browse Export Folder
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sPath.Declare
+	
+	F.Intrinsic.UI.FolderBrowser("Select Folder for Path",V.Local.sPath)
+	f.Intrinsic.Control.If(v.Local.sPath.IsCancel,=,False)
+		gui.Form.txtExportFolder.Text(v.Local.sPath)
+	f.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	f.Intrinsic.String.Build("Subroutine Error {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdBrowseExportFolder_Click.End
+Program.Sub.cmdExport_Click.Start
+f.Intrinsic.Control.Try	
+	V.Local.sError.Declare
+	v.Local.sFile.Declare
+	v.Local.sMsg.Declare
+	v.Local.iCnt.Declare
+	v.Local.sHold.Declare
+	
+	v.Local.sAccount.Declare
+	v.Local.sCheckNumber.Declare
+	v.Local.sAmount.Declare
+	v.Local.sIssueDate.Declare
+	v.Local.dIssueDate.Declare
+	v.Local.sPayeeName.Declare
+	v.Local.sContent.Declare
+	v.Local.dStart.Declare
+	v.Local.bEx.Declare
+	V.Local.sHeaders.Declare(String)
+	
+	v.Local.dStart.Set(v.Screen.Form!dpStart.Value)
+	
+	f.Intrinsic.File.DirExists(v.Screen.Form!txtExportFolder.Text.Trim,v.Local.bEx)
+	f.Intrinsic.Control.If(v.Local.bEx.Not)
+		f.Intrinsic.UI.Msgbox("Export Folder does not exist.","Attention")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.Screen.Form!ddlBankAcct.Text.Trim,=,"")
+		f.Intrinsic.UI.Msgbox("Please select Bank Account.","Attention")
+		f.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.UI.InvokeWaitDialog("Processing...")
+	gui.Form..Visible(false)
+
+	f.Data.DataView.Create("PreT","PreTDV",22,"SelectItem = 1","")
+	
+	'Bank Account
+	v.Local.sAccount.Set(v.Screen.Form!ddlBankAcct.Text.Trim)
+	
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataView.PreT!PreTDV.RowCount--,1)
+		'Issue date
+		v.Local.dIssueDate.Set(v.DataView.PreT!PreTDV(v.Local.iCnt).CheckDate!FieldValString)
+		'Edited date to be formatted as MM/DD/yyyy instead of MM/DD/yy
+		f.Intrinsic.String.Format(v.Local.dIssueDate,"MM/DD/yyyy",v.Local.sIssueDate)	
+	
+		'Check number
+		v.Local.sCheckNumber.Set(v.DataView.PreT!PreTDV(v.Local.iCnt).CheckNumber!FieldValString)
+		
+		'Check Amount
+		f.Intrinsic.String.Format(v.DataView.PreT!PreTDV(v.Local.iCnt).Amount!FieldValString,"0.00",v.Local.sAmount)	
+
+		'Payee Name
+		f.Intrinsic.String.Left(v.DataView.PreT!PreTDV(v.Local.iCnt).Payee!FieldValTrim,40,v.Local.sPayeeName)
+		f.Intrinsic.String.Replace(v.Local.sPayeeName,","," ",v.Local.sPayeeName)
+		
+		f.Intrinsic.Control.If(v.Local.iCnt,=,0)
+			f.Intrinsic.String.Build("{0},{1},{2},{3},{4},{5}", "Type", "Account #", "Check #", "Issue Date", "Amount", "Payee", v.Local.sHeaders)
+			f.Intrinsic.String.Build("{0}{1}{2},{3},{4},{5},{6},{7}", V.Local.sHeaders,v.Ambient.NewLine, "DDA", v.Local.sAccount, v.Local.sCheckNumber, v.Local.sIssueDate, v.Local.sAmount, v.Local.sPayeeName, v.Local.sContent)			
+		f.Intrinsic.Control.Else
+			f.Intrinsic.String.Build("{0}{1}{2},{3},{4},{5},{6},{7}",v.Local.sContent,v.Ambient.NewLine, "DDA", v.Local.sAccount, v.Local.sCheckNumber, v.Local.sIssueDate, v.Local.sAmount, v.Local.sPayeeName, v.Local.sContent)				
+		f.Intrinsic.Control.EndIf			
+
+	f.Intrinsic.Control.Next(v.Local.iCnt)	
+
+	'Write file
+	f.Intrinsic.String.Build("{0}\AP Check Issues_{1}.csv",v.Screen.Form!txtExportFolder.Text.Trim,v.Local.dStart.FormatYYYYMMDD,v.Local.sFile)
+	f.Intrinsic.File.String2File(v.Local.sFile,v.Local.sContent)
+	
+	'Msg Done and unload
+	f.Intrinsic.UI.CloseWaitDialog	
+	f.Intrinsic.String.Build("Generated file {0}",v.Local.sFile,v.Local.sMsg)
+	f.Intrinsic.UI.Msgbox(v.Local.sMsg,"Done")
+	F.Intrinsic.Control.CallSub("Unload")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6403_PosPay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+
+Program.Sub.cmdExport_Click.End
+Program.Sub.ContextMenu.Start
+f.Intrinsic.Control.Try	
+	V.Local.sError.Declare
+	
+	Gui.Form..ContextMenuCreate("SI")		
+	Gui.Form..ContextMenuAddItem("SI","SelectAll",0,"Select All")
+	Gui.Form..ContextMenuAddItem("SI","UnselectAll",0,"Unselect All")
+	
+	Gui.Form..ContextMenuSetItemEventHandler("SI","SelectAll","SI_Click")
+	Gui.Form..ContextMenuSetItemEventHandler("SI","UnselectAll","SI_Click")
+	
+	gui.Form.gsCustom.ContextMenuAttach("SI")
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6403_PosPay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry	
+Program.Sub.ContextMenu.End
+Program.Sub.SI_Click.Start
+f.Intrinsic.Control.Try	
+	V.Local.sError.Declare
+	
+	f.Intrinsic.Control.If(v.DataTable.PreT.Exists,=,False)
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.Args.ItemName,=,"SELECTALL")
+		f.Data.DataTable.SetValue("PreT",-1,"SelectItem",True)
+	f.Intrinsic.Control.ElseIf(v.Args.ItemName,=,"UNSELECTALL")
+		f.Data.DataTable.SetValue("PreT",-1,"SelectItem",False)
+	f.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: GCG_6403_PosPay.g2u{0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.SI_Click.End
+
+Program.Sub.Comments.Start
+${$5$}$2.0.0.0$}$2
+${$6$}$apadilla$}$20210630134930140$}$Lag9STqBJOmNXSbd5+msRcBWPGz0aFqSGjpgCwFu86ANFONN6jIuMGR0TR9nQMW9OquKfU+CMVlS9JzCaGwtBQ==
+Program.Sub.Comments.End
